@@ -3,3 +3,11 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  margin-left: 1rem;
+}
+
+li input {
+  margin-left: 1rem;
+}
