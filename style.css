@@ -4,10 +4,39 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: monospace;
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 275px;
+}
+
 body {
-  margin-left: 1rem;
+  display: grid;
+  text-align: center;
+}
+
+label input {
+  margin-left: 0.5rem;
+}
+
+#input-field {
+  box-shadow: 5px 0 0px 0 hotpink;
+}
+
+ul#todo-list {
+  text-align: left;
 }
 
 li input {
-  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+
+button {
+  background-color: white;
+  box-shadow: 5px 0px 0px 0px hotpink;
+}
+
+#all:checked + label {
+  text-decoration: line-through;
 }
