@@ -8,11 +8,23 @@ html {
   font-family: monospace;
   font-size: 16px;
   margin: 0 auto;
-  max-width: 275px;
+  width: 300px;
+  background-color: rgba(255, 105, 180, 0.224);
+}
+
+header {
+  margin-top: 1rem;
+}
+
+h1 {
+  margin: 0;
+  padding-bottom: 5px;
+  background-color: black;
+  font-size: 3rem;
+  text-shadow: 3px 3px hotpink;
 }
 
 body {
-  display: grid;
   text-align: center;
 }
 
@@ -20,23 +32,52 @@ label input {
   margin-left: 0.5rem;
 }
 
-#input-field {
-  box-shadow: 5px 0 0px 0 hotpink;
-}
-
 ul#todo-list {
   text-align: left;
 }
 
 li input {
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
+  margin-left: -20px;
+  margin-top: 5px;
 }
 
 button {
   background-color: white;
-  box-shadow: 5px 0px 0px 0px hotpink;
+  box-shadow: 3px 2px 0px 0px hotpink;
+  color: black;
+  border-color: black;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgba(255, 105, 180, 0.091);
 }
 
 #all:checked + label {
   text-decoration: line-through;
+}
+
+ul,
+#input-field,
+form,
+header {
+  background-color: rgba(255, 105, 180, 0.091);
+  box-shadow: 3px 2px 0px 0px hotpink;
+  color: black;
+  border: solid 2px;
+  border-color: black;
+  border-radius: 5px;
+}
+
+#input-field {
+  background-color: white;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+#all {
+  margin-top: 3px;
 }
