@@ -5,11 +5,29 @@ const todoList = document.getElementById("todo-list");
 const all = document.getElementById("all");
 const open = document.getElementById("open");
 const done = document.getElementById("done");
+const removeButton = document.getElementById("remove-button");
 
 // State
 let state = {
   todos: [],
+  filter: "",
 };
+
+// Load state from storage
+function loadStateFromStorage() {
+  const loadedState = localStorage.getItem("state");
+  // Stop if null
+  if (loadedState === null) {
+    return;
+  }
+  state = JSON.parse(loadedState);
+  render();
+}
+
+// Save state to local storage
+function saveState() {
+  localStorage.setItem("state", JSON.stringify(state));
+}
 
 // Render
 function render() {
@@ -18,6 +36,14 @@ function render() {
 
   // For each Obj in state.todos =>
   state.todos.forEach((todo) => {
+    // Filter
+    if (done.checked && !todo.done) {
+      return;
+    }
+    if (open.checked && todo.done) {
+      return;
+    }
+
     // Create <input>
     const input = document.createElement("input");
     // Add type = checkbox
@@ -32,7 +58,7 @@ function render() {
       // Listen and change done and assign to input.checked in todo scope
       todo.done = input.checked;
       // Save todo scope to local storage
-      localStorage.setItem("state", JSON.stringify(state));
+      saveState();
       // Restart render
       render();
     });
@@ -52,6 +78,17 @@ function render() {
     // Push <li> into <ul>
     todoList.append(listItem);
   });
+
+  // Sync filter
+  if (state.filter == "all") {
+    all.checked = true;
+  }
+  if (state.filter == "open") {
+    open.checked = true;
+  }
+  if (state.filter == "done") {
+    done.checked = true;
+  }
 }
 
 // Add new todo
@@ -79,7 +116,7 @@ function addNewTodo() {
     const id = Date.now();
     state.todos.push({ id, description, done: false });
 
-    localStorage.setItem("state", JSON.stringify(state));
+    saveState();
 
     inputBox.value = "";
 
@@ -87,7 +124,7 @@ function addNewTodo() {
   }
 }
 
-//Event Listener for add-button & Enter
+//Event Listener
 addButton.addEventListener("click", addNewTodo);
 inputBox.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
@@ -95,15 +132,30 @@ inputBox.addEventListener("keydown", (e) => {
   }
 });
 
-// Load State from storage
-function loadStateFromStorage() {
-  const loadedState = localStorage.getItem("state");
-  // Stop if null
-  if (loadedState === null) {
-    return;
-  }
-  state = JSON.parse(loadedState);
-}
+all.addEventListener("change", () => {
+  state.filter = "all";
+  saveState();
+  render();
+});
+
+open.addEventListener("change", () => {
+  state.filter = "open";
+  saveState();
+  render();
+});
+
+done.addEventListener("change", () => {
+  state.filter = "done";
+  saveState();
+  render();
+});
+
+// Remove done todos
+removeButton.addEventListener("click", () => {
+  state.todos = state.todos.filter((todo) => !todo.done);
+  saveState();
+  render();
+});
 
 loadStateFromStorage();
 render();

@@ -10,19 +10,25 @@
 </head>
 
 <body>
-    <h1>Todo App</h1>
-    <input type="checkbox" id="all">
-    <label for="all">All</label><br>
-    <input type="checkbox" id="open">
-    <label for="open">Open</label><br>
-    <input type="checkbox" id="done">
-    <label for="done">Done</label><br><br>
-    <button id="remove-button">Remove done Todos</button><br><br>
-    <input type="text" id="input-field" placeholder="What's up?">
-    <button id="add-button">Add</button>
-    <ul id="todo-list">
-    </ul>
-    <script src="script.js"></script>
+    <header>
+        <h1>Todo App</h1>
+    </header>
+    <main>
+        <form>
+            <label><input type="radio" id="all" name="radio" checked>
+                All</label>
+            <label><input type="radio" id="open" name="radio">
+                Open</label>
+            <label><input type="radio" id="done" name="radio">
+                Done</label>
+        </form>
+        <button id="remove-button">Remove done Todos</button>
+        <input type="text" id="input-field" placeholder="What's up?">
+        <button id="add-button">Add</button>
+        <ul id="todo-list">
+        </ul>
+        <script src="script.js"></script>
+    </main>
 </body>
 
 </html>
