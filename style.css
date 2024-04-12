@@ -28,18 +28,26 @@ body {
   text-align: center;
 }
 
-label input {
-  margin-left: 0.5rem;
+form {
+  margin-top: 1rem;
 }
 
-ul#todo-list {
-  text-align: left;
+#all {
+  margin-top: 3px;
+}
+
+label input {
+  margin-left: 0.5rem;
 }
 
 li input {
   margin-right: 0.3rem;
   margin-left: -20px;
   margin-top: 5px;
+}
+
+ul#todo-list {
+  text-align: left;
 }
 
 button {
@@ -52,10 +60,6 @@ button {
 
 button:hover {
   background-color: rgba(255, 105, 180, 0.091);
-}
-
-#all:checked + label {
-  text-decoration: line-through;
 }
 
 ul,
@@ -72,12 +76,4 @@ header {
 
 #input-field {
   background-color: white;
-}
-
-form {
-  margin-top: 1rem;
-}
-
-#all {
-  margin-top: 3px;
 }
